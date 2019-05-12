@@ -1,0 +1,20 @@
+doctype html
+html(lang='pl')
+    head
+        include ../partial/head.pug
+    body
+        include ../partial/headerAdmin.pug
+
+        main.container
+            h1 New city
+            .card
+                .card-body
+                    form(action='/city/new', method='post')
+                        .form-group
+                            label(for='name') Name
+                            input.form-control(type='text', name='name', placeholder='Enter name')
+                        button.btn.btn-primary(type='submit') Submit
+            
+            
+        include ../partial/footer.pug
+        

@@ -1,0 +1,38 @@
+doctype html
+html(lang='pl')
+    head
+        include ../partial/head.pug
+    body
+        include ../partial/headerAdmin.pug
+
+        main.container
+            h1 All caterings
+            .card
+                .card-body
+                    table.table.table-hover
+                        thead
+                            tr
+                                th logo
+                                th name
+                                th url
+                                th id
+                                th diets
+                        tbody
+                            each catering in caterings
+                                tr
+                                    td
+                                        img.img200(src=catering.logoUrl)
+                                    td= catering.name
+                                    td= catering.pageUrl
+                                    td= catering.id
+                                    td
+                                        each diet in catering.diets
+                                            p=diet.type
+                                                each caloriesPrice in diet.caloriesPrice
+                                                    p=caloriesPrice.calories
+                                        
+                                        
+                                    
+        include ../partial/footer.pug
+        
+        

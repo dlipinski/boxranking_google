@@ -1,0 +1,17 @@
+header
+    nav.navbar.navbar-expand-xl.navbar-dark.bg-dark.mb-3
+        a.navbar-brand(href='/admin') ADMIN
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#n')
+            span.navbar-toggler-icon
+        #n.navbar-collapse.collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown') City
+                    .dropdown-menu
+                        a.dropdown-item(href='/city') All cities
+                        a.dropdown-item(href='/city/new') New city
+                li.nav-item.dropdown
+                    a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown') Catering
+                    .dropdown-menu
+                        a.dropdown-item(href='/catering') All caterings
+                        a.dropdown-item(href='/catering/new') New catering

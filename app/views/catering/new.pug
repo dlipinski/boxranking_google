@@ -1,0 +1,113 @@
+doctype html
+html(lang='pl')
+    head
+        include ../partial/head.pug
+        link(rel='stylesheet', href='/newCateringStyle.css')
+    body
+        include ../partial/headerAdmin.pug
+
+        main.container
+            h1 New catering
+            .card
+                .card-body
+                    form#submitNew(action='/catering/new', method='post')
+                        .card.mb-3
+                            .card-body
+                                .form-group
+                                    label(for='name') Name
+                                    input#name.form-control(name='name', type='text', placeholder='Enter name', autocomplete='off')
+                                .form-group
+                                    label(for='page') Page
+                                    input#page.form-control(name='page', type='text', placeholder='Enter page url', autocomplete='off')
+                                .form-group
+                                    label(for='imageAddress') Logo
+                                    input#imageAddress.form-control(name='imageAddress', type='text', placeholder='Enter image address', autocomplete='off')
+                                    .mb-4
+                                    .row
+                                        .col
+                                            img#imagePreview.photoPreview.float-right
+                                        .col
+                                            .photoOptions.float-left
+                                                .form-check
+                                                    input#isdark.form-check-input(name='isDark', type='checkbox')
+                                                    label.form-check-label(for='isdark') Dark background
+                        .card.mb-3
+                            .card-body
+                                .form-group
+                                    label(for='cities') Cities
+                                    select#cities.selectpicker.form-control(name='cities', multiple, data-live-search='true')
+                                        each city in cities
+                                            option(value=city.id)= city.name
+                        .row.mb-3
+                            .col
+                                .card
+                                    .card-header Standard
+                                    .card-body.p-0
+                                        table.table#standard
+                                            thead
+                                                tr
+                                                    th Calories
+                                                    th Price per day
+                                            tbody
+                                                each val in [1,2,3,4,5,6,7,7]
+                                                    tr.caloriesPrice
+                                                        td
+                                                            input.form-control.calories(type='number')
+                                                        td
+                                                            input.form-control.price(type='number')
+
+                            .col
+                                .card
+                                    .card-header Sport
+                                    .card-body.p-0
+                                        table.table#sport
+                                            thead
+                                                tr
+                                                    th Calories
+                                                    th Price per day
+                                            tbody
+                                                each val in [1,2,3,4,5,6,7,8]
+                                                    tr.caloriesPrice
+                                                        td
+                                                            input.form-control.calories(type='number')
+                                                        td
+                                                            input.form-control.price(type='number')
+                            .col
+                                .card
+                                    .card-header Slim
+                                    .card-body.p-0
+                                        table.table#slim
+                                            thead
+                                                tr
+                                                    th Calories
+                                                    th Price per day
+                                            tbody
+                                                each val in [1,2,3,4,5,6,7,8]
+                                                    tr.caloriesPrice
+                                                        td
+                                                            input.form-control.calories(type='number')
+                                                        td
+                                                            input.form-control.price(type='number')
+                            .col
+                                .card
+                                    .card-header Vege
+                                    .card-body.p-0
+                                        table.table#vege
+                                            thead
+                                                tr
+                                                    th Calories
+                                                    th Price per day
+                                            tbody
+                                                each val in [1,2,3,4,5,6,7,8]
+                                                    tr.caloriesPrice
+                                                        td
+                                                            input.form-control.calories(type='number')
+                                                        td
+                                                            input.form-control.price(type='number')
+
+                        button.btn.btn-primary(type='submit') Submit
+            
+            
+        include ../partial/footer.pug
+        script(src='../newCateringScript.js')
+        

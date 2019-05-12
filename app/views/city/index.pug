@@ -1,0 +1,32 @@
+doctype html
+html(lang='pl')
+    head
+        include ../partial/head.pug
+    body
+        include ../partial/headerAdmin.pug
+
+        main.container
+            h1 All cities
+            .card
+                .card-body
+                    table.table.table-hover
+                        thead
+                            tr
+                                th name
+                                th id
+                                th 
+                        tbody
+                            each city in cities
+                                tr
+                                    td= city.name
+                                    td= city.id
+                                    td
+                                        a.btn.btn-warning(href='city/'+city.id) Edit
+                                        form.float-right(action='/city/delete', method='post')
+                                            input.form-control(type='hidden', name='id', value=city.id)
+                                            button.btn.btn-danger(type='submit') Delete
+                                        
+                                    
+        include ../partial/footer.pug
+        
+        
