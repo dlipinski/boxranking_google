@@ -1,0 +1,33 @@
+.card.border-teal.mt-5
+    .card-body.text-dark
+        .row
+            .col-sm.border-right-teal#breakCol
+                .row.mt-3
+                    .col.mb-3
+                        label(for='cityPicker') Miasto
+                        br
+                        select#cityPicker.selectpicker(data-live-search='true')
+                            each city in cities
+                                if urlName && urlName == city.urlName
+                                    option(value=city.urlName, selected=true)=city.name
+                                else
+                                    option(value=city.urlName)=city.name
+                    .col.mb-3
+                        label(for='typePicker') Typ diety
+                        br
+                        select#typePicker.selectpicker(multiple)
+                            each dietType in dietTypes
+                                option(value=dietType)=dietType
+            .col-sm
+                .row.mt-3
+                    .col.pl-4.pr-4
+                        label(for='#priceRange') Cena za dzień: &nbsp;
+                        i#price
+                        #priceRange
+                .row
+                    .col.pt-3.pl-4.pr-4
+                        label(for='#caloriesRange') Ilość kalorii: &nbsp;
+                        i#calories
+                        #caloriesRange
+    .card-footer.p-0
+        button.btn.btn-block.bg-light.border-top-teal.rounded-0.p-3.text-secondary(style='font-size:20px; border-radius: 0px 0px 6px 6px;') <i class="fas fa-search"></i> Wyszukaj 

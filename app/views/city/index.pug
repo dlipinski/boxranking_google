@@ -13,16 +13,18 @@ html(lang='pl')
                         thead
                             tr
                                 th name
+                                th urlName
                                 th id
                                 th 
                         tbody
                             each city in cities
                                 tr
                                     td= city.name
+                                    td= city.urlName
                                     td= city.id
                                     td
                                         a.btn.btn-warning(href='city/'+city.id) Edit
-                                        form.float-right(action='/city/delete', method='post')
+                                        form.float-right(action='admin/city/delete', method='post')
                                             input.form-control(type='hidden', name='id', value=city.id)
                                             button.btn.btn-danger(type='submit') Delete
                                         

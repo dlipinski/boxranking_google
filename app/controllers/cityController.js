@@ -1,6 +1,7 @@
 const City = require('../models/city')
 
 exports.getList = (req, res) => {
+    console.log('city')
     City.find()
     .sort({ name: 1 })
     .exec((err, cities) => {
@@ -15,6 +16,7 @@ exports.getNew = (req, res) => {
 exports.postNew = (req, res) => {
     let newCity = new City()
     newCity.name = req.body.name
+    newCity.urlName = makeUrlName(req.body.name)
     try {
 		newCity.save()
 		res.redirect('/city')
@@ -33,7 +35,10 @@ exports.getEdit = (req, res) => {
 exports.postEdit = (req, res) => {
     City.findOneAndUpdate(
         { _id: req.body.id },
-        { name: req.body.name },
+        { 
+            name: req.body.name,
+            urlName: makeUrlName(req.body.name)
+        },
         (err, city) => {
             res.redirect('/city')
         }
@@ -47,4 +52,27 @@ exports.postDelete = (req, res) => {
             res.redirect(`/cities`)
         }
     )
+}
+
+const makeUrlName = (name) => {
+    name = name.toLowerCase()
+    let replaceDir = {
+        'ą': 'a',
+        'ć': 'c',
+        'ę': 'e',
+        'ł': 'l',
+        'ń': 'n',
+        'ó': 'o',
+        'ś': 's',
+        'ź': 'z',
+        'ż': 'z',
+        ' ': '-'
+    }
+    
+    let urlName = ''
+    for(char of name) {
+        urlName += replaceDir[char] ? replaceDir[char] : char
+    }
+
+    return urlName
 }

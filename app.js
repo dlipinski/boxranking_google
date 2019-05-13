@@ -21,8 +21,8 @@ app.use(session({
 app.use('/',routes())
 
 //mongoose.set('useFindAndModify', false)
-//mongoose.connect('mongodb+srv://boxranking:brdkoppo@boxranking-cluster-1cmvm.gcp.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
-mongoose.connect('mongodb://localhost/myDB', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://boxranking:brdkoppo@boxranking-cluster-1cmvm.gcp.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
+//mongoose.connect('mongodb://localhost/myDB', { useNewUrlParser: true })
 
 
 app.listen(8080, () => {

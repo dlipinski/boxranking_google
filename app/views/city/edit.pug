@@ -9,7 +9,7 @@ html(lang='pl')
             h1 Edit city
             .card
                 .card-body
-                    form(action=`/city/edit/`, method='post')
+                    form(action=`edit/`, method='post')
                         input.form-control(type='hidden', name='id', value=city.id)
                         .form-group 
                             label(for='name') Name

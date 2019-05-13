@@ -1,0 +1,19 @@
+mixin cateringRow (catering)
+    .row.catering-row
+        .col-sm-2.mb-1.col-logo
+            div
+                img(src=catering.logo, alt='')
+        .col-sm-6.align-middle-my
+            table.diet-table
+                tbody
+                    each dietType in catering.dietTypes
+                        tr
+                            td= dietType.name
+                            td
+                                table
+                                    tbody
+                                        each caloriesPrice in dietType.caloriesPrices
+                                            tr
+                                                td= caloriesPrice.calories + ' kcal'
+                                                td= caloriesPrice.price + ' pln'
+        .col-sm-4

@@ -73,8 +73,8 @@ const addSubmitListener = () => {
             })
 
             let xhr = new XMLHttpRequest()
-            xhr.open('POST', '/catering/new', true)
-            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.open('GET', '/catering/new', true)
+            xhr.setRequestHeader("Content-Type", "application/json")
             console.log(body)
             xhr.send(JSON.stringify(body))
         }

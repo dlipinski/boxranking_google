@@ -1,0 +1,95 @@
+body {
+    font-family: 'Chivo', sans-serif;
+}
+.container {
+    max-width:1100px;
+    
+}
+.border-teal {
+    border: 1px solid #39CCCC;
+}
+.border-bottom-teal {
+    border-bottom: 1px solid #39CCCC;
+}
+.border-right-teal {
+    border-right: 1px solid #39CCCC;
+}
+.border-top-teal {
+    border-top: 1px solid #39CCCC;
+}
+.bg-teal {
+    background:  #39CCCC;
+}
+#priceRange, #caloriesRange {
+    height: 7px;
+    margin-top:13px;
+    margin-bottom: 25px;
+}
+.noUi-connect {
+    background: #39CCCC;
+ 
+}
+
+.noUi-handle {
+    margin-top: -5px;
+}
+.catering-row {
+    border-top:  2px dashed #39CCCC;
+    vertical-align: center !important;
+    text-align: center;
+    padding: 5px;
+    color: #545454;
+    font-family: 'Courier New', Courier, monospace
+}
+.catering-row:first-of-type{
+    border-top: none;
+}
+
+label{
+    font-size: 23px;
+}
+
+.catering-row:last-child {
+    border-bottom: 2px dashed #39CCCC;
+}
+
+.col-logo > div {
+    border: 1px dotted #868686;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.diet-table,
+.diet-table table {
+    width: 100%;
+    text-align: center;
+}
+
+.diet-table>tbody>tr {
+    border-bottom: 1px solid #e7e5e5;
+}
+
+.diet-table>tbody>tr:last-child {
+    border-bottom: none;
+}
+
+.diet-table>tbody>tr>td>table>tbody>tr>td {
+    border-bottom: 1px dotted #cccbcb;
+    padding:3px;
+}
+
+.diet-table>tbody>tr>td>table>tbody>tr:last-child>td {
+    border-bottom: none;
+}
+
+.align-middle-my{
+    vertical-align: middle !important;
+}
+.table-cell{
+    display: table-cell;
+    width: 100%;
+}
+
+.dropdown{
+    min-width: 100%;
+}

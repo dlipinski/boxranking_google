@@ -8,19 +8,20 @@ module.exports = () => {
 
     /* INDEX */
     router.get('/', indexController.index)
+    router.get('/:urlName', indexController.indexCity)
 
     /* CITY */
-    router.get('/city', cityController.getList)
-    router.get('/city/new', cityController.getNew)
-    router.post('/city/new', cityController.postNew)
-    router.get('/city/:id', cityController.getEdit)
-    router.post('/city/:id', cityController.postEdit)
-    router.post('/city/delete', cityController.postDelete)
+    router.get('/admin/cities', cityController.getList)
+    router.get('/admin/city/new', cityController.getNew)
+    router.post('/admin/city/new', cityController.postNew)
+    router.get('/admin/city/:id', cityController.getEdit)
+    router.post('/admin/city/:id', cityController.postEdit)
+    router.post('/admin/city/delete', cityController.postDelete)
 
     /* CATERING */
-    router.get('/catering', cateringController.getList)
-    router.get('/catering/new', cateringController.getNew)
-    router.post('/catering/new', cateringController.postNew)
+    router.get('/admin/caterings', cateringController.getList)
+    router.get('/admin/catering/new', cateringController.getNew)
+    router.post('/admin/catering/new', cateringController.postNew)
     /*router.get('/catering/:id', cateringController.getEdit)
     router.post('/catering/:id', cateringController.postEdit)
     router.post('/catering/delete', cateringController.postDelete)*/

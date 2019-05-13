@@ -1,0 +1,14 @@
+doctype html
+html(lang='pl')
+    head
+        include ../partial/head.pug
+    body
+        include ../partial/header.pug
+
+        main.container(role='main').h-100
+            include ../partial/preferences.pug
+            .mb-3
+
+        include ../partial/footer.pug
+        script(src='/nouislider.min.js')
+        script(src='/indexScripts.js')
