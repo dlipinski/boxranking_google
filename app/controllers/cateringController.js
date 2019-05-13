@@ -19,6 +19,7 @@ exports.getList = (req, res) => {
 	})
 }
 
+
 exports.getNew = (req, res) => {
     City.find()
     .sort({ name: 1 })
