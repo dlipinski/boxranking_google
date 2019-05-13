@@ -16,20 +16,23 @@ html(lang='pl')
                                 th name
                                 th url
                                 th id
+                                th cities
                                 th diets
                         tbody
                             each catering in caterings
                                 tr
                                     td
-                                        img.img200(src=catering.logoUrl)
+                                        img(src=catering.logoUrl, style='height:100px;')
                                     td= catering.name
                                     td= catering.pageUrl
                                     td= catering.id
                                     td
+                                        each city in catering.cities
+                                            p=city.name
+                                    td
                                         each diet in catering.diets
-                                            p=diet.type
-                                                each caloriesPrice in diet.caloriesPrice
-                                                    p=caloriesPrice.calories
+                                            p=diet.type + ' '
+                                                span.badge.badge-secondary=  diet.caloriesPrices.length
                                         
                                         
                                     

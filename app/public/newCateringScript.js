@@ -5,6 +5,7 @@ document.addEventListener('readystatechange', () => {
 })
 
 const initApp = () => {
+    alert('elo')
     addImageInputListener()
     addBDarkImageBackgroundLister()
     addSubmitListener()
@@ -29,6 +30,7 @@ const addBDarkImageBackgroundLister = () => {
         }
     })
 }
+
 const getSelectValues = (select) => {
     let result = []
     let options = select && select.options
@@ -41,6 +43,7 @@ const getSelectValues = (select) => {
     }
     return result
 }
+
 const addSubmitListener = () => {
     let form = document.querySelector('#submitNew')
     form.addEventListener('submit', e => {
@@ -52,63 +55,27 @@ const addSubmitListener = () => {
             body.logoUrl = document.querySelector('#imageAddress').value
             body.isDark = document.querySelector('#isdark').checked
             body.cities = getSelectValues(document.querySelector('#cities'))
-            body.standard = []
-            body.sport = []
-            body.slim = []
-            body.vege = []
+            body.diets = []
 
-            let standardTable = document.querySelector('#standard')
-            let sportTable = document.querySelector('#sport')
-            let slimTable = document.querySelector('#slim')
-            let vegeTable = document.querySelector('#slim')
-
-            standardTable.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
-                let calories = caloriesPrice.querySelector('.calories').value
-                let price = caloriesPrice.querySelector('.price').value
-                if (calories !== '' && price !== '') {
-                    body.standard.push({
-                        calories,
-                        price
-                    })
-                }
-            })
-
-            sportTable.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
-                let calories = caloriesPrice.querySelector('.calories').value
-                let price = caloriesPrice.querySelector('.price').value
-                if (calories !== '' && price !== '') {
-                    body.sport.push({
-                        calories,
-                        price
-                    })
-                }
-            })
-
-            slimTable.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
-                let calories = caloriesPrice.querySelector('.calories').value
-                let price = caloriesPrice.querySelector('.price').value
-                if (calories !== '' && price !== '') {
-                    body.slim.push({
-                        calories,
-                        price
-                    })
-                }
-            })
-
-            vegeTable.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
-                let calories = caloriesPrice.querySelector('.calories').value
-                let price = caloriesPrice.querySelector('.price').value
-                if (calories !== '' && price !== '') {
-                    body.vege.push({
-                        calories,
-                        price
-                    })
-                }
+            document.querySelectorAll('.dietTable').forEach(table => {
+                let diet = { type: table.id, caloriesPrice: [] }
+                table.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
+                    let calories = caloriesPrice.querySelector('.calories').value
+                    let price = caloriesPrice.querySelector('.price').value
+                    if (calories !== '' && price !== '') {
+                        diet.caloriesPrice.push({
+                            calories,
+                            price
+                        })
+                    }
+                })
+                body.diets.push(diet)
             })
 
             let xhr = new XMLHttpRequest()
             xhr.open('POST', '/catering/new', true)
             xhr.setRequestHeader("Content-Type", "application/json");
+            console.log(body)
             xhr.send(JSON.stringify(body))
         }
 
@@ -117,6 +84,7 @@ const addSubmitListener = () => {
 }
 
 const valid = () => {
+    return true
     let nameInput = document.querySelector('#name')
     let pageInput = document.querySelector('#page')
     let imageAddress = document.querySelector('#imageAddress')
