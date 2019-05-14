@@ -9,6 +9,7 @@ module.exports = () => {
     /* INDEX */
     router.get('/', indexController.index)
     router.get('/:urlName/', indexController.indexCity)
+    router.post('/API/search/', indexController.indexSearch)
 
     /* CITY */
     router.get('/admin/cities', cityController.getList)

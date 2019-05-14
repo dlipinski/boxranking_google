@@ -3,14 +3,43 @@ document.addEventListener('readystatechange', () => {
         initApp()
     }
 })
+const initHideCover = () => {
+    document.querySelector('.cover').style.top = '-100vh'
+
+}
 
 const initApp = () => {
-    
+    initHideCover()
     initSliders()
     smallInit()
     initTypeListener()
     initDaysListener()
     initCityListener()
+    initSubmitFind()
+}
+
+const initSubmitFind = () => {
+    let searchButton = document.querySelector('#search')
+    searchButton.addEventListener('click', () => {
+        let body = {}
+        body.city = document.querySelector('#cityPicker').value
+        body.types = [...document.querySelector('#typePicker').options].filter(x => x.selected).map(x => x.value)
+        body.days = document.querySelector(`#days20`).classList.contains('active') ? 20 : 28
+        body.prices = document.querySelector('#priceRange').noUiSlider.get()
+        body.calories = document.querySelector('#caloriesRange').noUiSlider.get()
+        let xhr = new XMLHttpRequest()
+        xhr.open('POST', '/API/search', true)
+        xhr.setRequestHeader("Content-Type", "application/json")   
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.readyState == 4) {
+                if(xhr.status == 200)
+                    console.log(xhr.responseText);
+                else
+                    console.log("Błąd podczas ładowania strony\n");
+            }
+        })
+        xhr.send(JSON.stringify(body))
+    })
 }
 
 const initDaysListener = () => {
@@ -21,8 +50,13 @@ const initDaysListener = () => {
         return cookies.filter(x => x.name === name)[0] ? cookies.filter(x => x.name === name)[0].value : undefined
     }
     console.log(document.cookie)
-    if(cookies.get('days'))
-        document.querySelector(`#days${cookies.get('days')}`).classList.add('active')
+    if(cookies.get('days')){
+        setTimeout(()=>{
+            document.querySelector(`#days${cookies.get('days')}`).click()
+        },10)
+       
+    }
+        
     days20.addEventListener('click', () => {
         document.cookie = `days=20; expires=Fri, 3 Aug 2020 20:47:11 UTC; path=/`
         days28.classList.remove('active')

@@ -4,15 +4,18 @@ html(lang='pl')
         include ../partial/head.pug
     body
         include ../partial/header.pug
-
+        .cover
+            div
+                img(src='/logo.png')
         main.container(role='main').h-100
             include ../partial/preferences.pug
             .mb-3
-            .card(style='border-radius:10px;')
-                .card-body
-                    include ../partial/cateringRow.pug
-                    each catering in caterings
-                        +cateringRow(catering)
+  
+            include ../partial/cateringRow.pug
+            each catering, index in caterings
+                +cateringRow(catering, index)
+            each catering, index in caterings
+                +cateringRow(catering, index+2)
 
         include ../partial/footer.pug
         script(src='/nouislider.min.js')

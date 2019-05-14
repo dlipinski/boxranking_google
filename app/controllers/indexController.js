@@ -41,3 +41,9 @@ exports.indexCity = (req, res) => {
     })
   })
 }
+
+exports.indexSearch = (req, res) => {
+  console.log('api call')
+  console.log(req.body)
+  res.send(JSON.stringify(req.body))
+}
