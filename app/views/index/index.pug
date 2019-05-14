@@ -8,6 +8,11 @@ html(lang='pl')
         main.container(role='main').h-100
             include ../partial/preferences.pug
             .mb-3
+            .card(style='border-radius:10px;')
+                .card-body
+                    include ../partial/cateringRow.pug
+                    each catering in caterings
+                        +cateringRow(catering)
 
         include ../partial/footer.pug
         script(src='/nouislider.min.js')

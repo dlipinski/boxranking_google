@@ -1,8 +1,8 @@
-.card.border-teal.mt-5
+.card.border-teal(style='border-radius:10px;')
     .card-body.text-dark
         .row
             .col-sm.border-right-teal#breakCol
-                .row.mt-3
+                .row.mt-2
                     .col.mb-3
                         label(for='cityPicker') Miasto
                         br
@@ -18,6 +18,13 @@
                         select#typePicker.selectpicker(multiple)
                             each dietType in dietTypes
                                 option(value=dietType)=dietType
+                .row.mb-3.mt-2
+                    .col
+                        label(for='daysPicker') Ilość dni w miesiącu
+                        br
+                        .btn-group.w-100
+                            button.btn.btn-light.p-2#days20 20
+                            button.btn.btn-light.p-2#days28 28
             .col-sm
                 .row.mt-3
                     .col.pl-4.pr-4
@@ -25,9 +32,9 @@
                         i#price
                         #priceRange
                 .row
-                    .col.pt-3.pl-4.pr-4
+                    .col.pt-2.pl-4.pr-4
                         label(for='#caloriesRange') Ilość kalorii: &nbsp;
                         i#calories
                         #caloriesRange
     .card-footer.p-0
-        button.btn.btn-block.bg-light.border-top-teal.rounded-0.p-3.text-secondary(style='font-size:20px; border-radius: 0px 0px 6px 6px;') <i class="fas fa-search"></i> Wyszukaj 
+        button.btn.btn-block.bg-light.p-2.text-dark(style='font-size:20px;border-radius:  0px 0px 10px 10px;') <i class="fas fa-search"></i> Wyszukaj 

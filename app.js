@@ -24,7 +24,6 @@ app.use('/',routes())
 mongoose.connect('mongodb+srv://boxranking:brdkoppo@boxranking-cluster-1cmvm.gcp.mongodb.net/test?retryWrites=true', { useNewUrlParser: true })
 //mongoose.connect('mongodb://localhost/myDB', { useNewUrlParser: true })
 
-
 app.listen(8080, () => {
   console.log(`App listening on port 8080`)
   console.log('Press Ctrl+C to quit.')

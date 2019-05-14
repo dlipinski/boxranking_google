@@ -1,9 +1,12 @@
 body {
+    font-display: auto;
     font-family: 'Chivo', sans-serif;
+    background: #39CCCC;
+    
 }
+
 .container {
     max-width:1100px;
-    
 }
 .border-teal {
     border: 1px solid #39CCCC;
@@ -21,9 +24,11 @@ body {
     background:  #39CCCC;
 }
 #priceRange, #caloriesRange {
-    height: 7px;
-    margin-top:13px;
+    height: 5px;
+    margin-top:18px;
     margin-bottom: 25px;
+    background: white;
+    border: 1px solid #ececec;
 }
 .noUi-connect {
     background: #39CCCC;
@@ -31,7 +36,7 @@ body {
 }
 
 .noUi-handle {
-    margin-top: -5px;
+    margin-top: -7px;
 }
 .catering-row {
     border-top:  2px dashed #39CCCC;
@@ -46,7 +51,7 @@ body {
 }
 
 label{
-    font-size: 23px;
+    font-size: 20px;
 }
 
 .catering-row:last-child {
@@ -92,4 +97,30 @@ label{
 
 .dropdown{
     min-width: 100%;
+}
+
+.btn-light{
+    font-size: 18px;
+}
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn.focus:active,
+.btn:active:focus,
+.btn:focus,
+.noUi-handle:focus,
+input:focus{
+  outline: 0 !important;
+  outline-offset: 0  !important;
+  background-image: none  !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none  !important;
+}
+
+.btn-group, .dropdown{
+    border: 1px dashed #39CCCC;
+    border-radius: 5px;
+}
+label, .btn{
+    color: #444444 !important;
 }

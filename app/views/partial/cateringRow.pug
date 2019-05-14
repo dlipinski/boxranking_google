@@ -1,19 +1,45 @@
 mixin cateringRow (catering)
     .row.catering-row
-        .col-sm-2.mb-1.col-logo
-            div
-                img(src=catering.logo, alt='')
-        .col-sm-6.align-middle-my
-            table.diet-table
-                tbody
-                    each dietType in catering.dietTypes
-                        tr
-                            td= dietType.name
-                            td
-                                table
-                                    tbody
-                                        each caloriesPrice in dietType.caloriesPrices
-                                            tr
-                                                td= caloriesPrice.calories + ' kcal'
-                                                td= caloriesPrice.price + ' pln'
-        .col-sm-4
+        .col-sm-4.mb-1.col-logo
+            .logo= catering.name
+        if !catering.diets[2]
+            .col-sm-8.align-middle-my
+                table.diet-table
+                    tbody
+                        each diet in [catering.diets[0], catering.diets[1]]
+                            tr
+                                td= diet.type
+                                td
+                                    table
+                                        tbody
+                                            each caloriesPrice in diet.caloriesPrices
+                                                tr
+                                                    td= caloriesPrice.calories + ' kcal'
+                                                    td= caloriesPrice.price + ' pln'
+        else
+            .col-sm-4.align-middle-my
+                table.diet-table
+                    tbody
+                        each diet in [catering.diets[0], catering.diets[1]]
+                            tr
+                                td= diet.type
+                                td
+                                    table
+                                        tbody
+                                            each caloriesPrice in diet.caloriesPrices
+                                                tr
+                                                    td= caloriesPrice.calories + ' kcal'
+                                                    td= caloriesPrice.price + ' pln'
+            .col-sm-4.align-middle-my
+                table.diet-table
+                    tbody
+                        each diet in [catering.diets[2], catering.diets[3]]
+                            tr
+                                td= diet.type
+                                td
+                                    table
+                                        tbody
+                                            each caloriesPrice in diet.caloriesPrices
+                                                tr
+                                                    td= caloriesPrice.calories + ' kcal'
+                                                    td= caloriesPrice.price + ' pln'
