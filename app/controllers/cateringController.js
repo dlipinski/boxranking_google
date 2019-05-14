@@ -12,7 +12,6 @@ exports.getList = (req, res) => {
         CaloriesPrice.populate(caterings, {
             path: 'diets.caloriesPrices'
         }, (err, cateringsPopulated) => {
-            console.log(cateringsPopulated)
             res.render('catering', { caterings: cateringsPopulated })
         })
 	
@@ -27,9 +26,10 @@ exports.getNew = (req, res) => {
         res.render('catering/new', { cities })
 	})
 }
-
+const util = require('util')
 exports.postNew = async (req, res) => {
-    let body = getReqBody()
+    Catering.remove({})
+    let body = req.body
     let newCatering = new Catering()
     newCatering.name = body.name
     newCatering.pageUrl = body.pageUrl
@@ -44,6 +44,7 @@ exports.postNew = async (req, res) => {
     for (diet of body.diets) {
         let newDiet = new Diet()
         newDiet.type = diet.type
+        newDiet.days = diet.days
         for (caloriesPrice of diet.caloriesPrices){
             let caloriesPriceDB = await CaloriesPrice.findOne({ calories: caloriesPrice.calories, price: caloriesPrice.price })
             if(!caloriesPriceDB){
@@ -56,7 +57,7 @@ exports.postNew = async (req, res) => {
         newCatering.diets.push(newDiet)
     }
 
-    newCatering.save()
+    await newCatering.save()
 }
 
 

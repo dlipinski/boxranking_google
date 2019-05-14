@@ -1,12 +1,13 @@
 body {
     font-display: auto;
     font-family: 'Chivo', sans-serif;
-    background: #39CCCC;
+    background: rgba(57, 204, 204, 0.691);
     
 }
 
 .container {
     max-width:1100px;
+    
 }
 .border-teal {
     border: 1px solid #39CCCC;

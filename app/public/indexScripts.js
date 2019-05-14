@@ -20,6 +20,7 @@ const initDaysListener = () => {
     cookies.get = (name) => {
         return cookies.filter(x => x.name === name)[0] ? cookies.filter(x => x.name === name)[0].value : undefined
     }
+    console.log(document.cookie)
     if(cookies.get('days'))
         document.querySelector(`#days${cookies.get('days')}`).classList.add('active')
     days20.addEventListener('click', () => {

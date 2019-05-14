@@ -10,7 +10,7 @@ html(lang='pl')
             h1 New catering
             .card
                 .card-body
-                    form#submitNew(action='/catering/new', method='post')
+                    form#submitNew(action='/admin/catering/new', method='post')
                         .card.mb-3
                             .card-body
                                 .form-group
@@ -38,76 +38,148 @@ html(lang='pl')
                                     select#cities.selectpicker.form-control(name='cities', multiple, data-live-search='true')
                                         each city in cities
                                             option(value=city.id)= city.name
-                        .row.mb-3
-                            .col
-                                .card
-                                    .card-header Standard
-                                    .card-body.p-0
-                                        table.table#standard.dietTable
-                                            thead
-                                                tr
-                                                    th Calories
-                                                    th Price per day
-                                            tbody
-                                                each val in [1,2,3,4,5,6,7,7]
-                                                    tr.caloriesPrice
-                                                        td
-                                                            input.form-control.calories(type='number')
-                                                        td
-                                                            input.form-control.price(type='number')
+                        .card.mb-3#days20.days
+                            .card-header 20 days/month
+                            .card-body
+                                .row
+                                    .col
+                                        .card
+                                            .card-header Standard
+                                            .card-body.p-0
+                                                table.table#standard.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
 
-                            .col
-                                .card
-                                    .card-header Sport
-                                    .card-body.p-0
-                                        table.table#sport.dietTable
-                                            thead
-                                                tr
-                                                    th Calories
-                                                    th Price per day
-                                            tbody
-                                                each val in [1,2,3,4,5,6,7,8]
-                                                    tr.caloriesPrice
-                                                        td
-                                                            input.form-control.calories(type='number')
-                                                        td
-                                                            input.form-control.price(type='number')
-                            .col
-                                .card
-                                    .card-header Slim
-                                    .card-body.p-0
-                                        table.table#slim.dietTable
-                                            thead
-                                                tr
-                                                    th Calories
-                                                    th Price per day
-                                            tbody
-                                                each val in [1,2,3,4,5,6,7,8]
-                                                    tr.caloriesPrice
-                                                        td
-                                                            input.form-control.calories(type='number')
-                                                        td
-                                                            input.form-control.price(type='number')
-                            .col
-                                .card
-                                    .card-header Vege
-                                    .card-body.p-0
-                                        table.table#vege.dietTable
-                                            thead
-                                                tr
-                                                    th Calories
-                                                    th Price per day
-                                            tbody
-                                                each val in [1,2,3,4,5,6,7,8]
-                                                    tr.caloriesPrice
-                                                        td
-                                                            input.form-control.calories(type='number')
-                                                        td
-                                                            input.form-control.price(type='number')
+                                    .col
+                                        .card
+                                            .card-header Sport
+                                            .card-body.p-0
+                                                table.table#sport.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+                                    .col
+                                        .card
+                                            .card-header Slim
+                                            .card-body.p-0
+                                                table.table#slim.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+                                    .col
+                                        .card
+                                            .card-header Vege
+                                            .card-body.p-0
+                                                table.table#vege.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+                        .card.mb-3#days28.days
+                            .card-header 28 days/month
+                            .card-body
+                                .row
+                                    .col
+                                        .card
+                                            .card-header Standard
+                                            .card-body.p-0
+                                                table.table#standard.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
 
-                        button.btn.btn-primary(type='submit') Submit
+                                    .col
+                                        .card
+                                            .card-header Sport
+                                            .card-body.p-0
+                                                table.table#sport.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+                                    .col
+                                        .card
+                                            .card-header Slim
+                                            .card-body.p-0
+                                                table.table#slim.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+                                    .col
+                                        .card
+                                            .card-header Vege
+                                            .card-body.p-0
+                                                table.table#vege.dietTable
+                                                    thead
+                                                        tr
+                                                            th Calories
+                                                            th Price per day
+                                                    tbody
+                                                        each val in [1000,1200,1500,2000,2500,3000,3500,4000,4500]
+                                                            tr.caloriesPrice
+                                                                td
+                                                                    .form-control.calories(type='number', readonly)=val
+                                                                td
+                                                                    input.form-control.price(type='number')
+
+                        button.btn.btn-primary#submit(type='submit') Submit
             
             
         include ../partial/footer.pug
-        script(src='../newCateringScript.js')
+        script(src='../../newCateringScript.js')
         

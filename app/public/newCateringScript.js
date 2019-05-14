@@ -5,7 +5,6 @@ document.addEventListener('readystatechange', () => {
 })
 
 const initApp = () => {
-    alert('elo')
     addImageInputListener()
     addBDarkImageBackgroundLister()
     addSubmitListener()
@@ -45,8 +44,8 @@ const getSelectValues = (select) => {
 }
 
 const addSubmitListener = () => {
-    let form = document.querySelector('#submitNew')
-    form.addEventListener('submit', e => {
+    let btn = document.querySelector('#submit')
+    btn.addEventListener('click', e => {
         e.preventDefault()
         if (valid()) {
             let body = {}
@@ -54,29 +53,32 @@ const addSubmitListener = () => {
             body.pageUrl = document.querySelector('#page').value
             body.logoUrl = document.querySelector('#imageAddress').value
             body.isDark = document.querySelector('#isdark').checked
-            body.cities = getSelectValues(document.querySelector('#cities'))
+            body.cities = getSelectValues(document.querySelector('#cities')) || []
             body.diets = []
+            
+            document.querySelectorAll('.days').forEach(daysCard => {
+                daysCard.querySelectorAll('.dietTable').forEach(table => {
 
-            document.querySelectorAll('.dietTable').forEach(table => {
-                let diet = { type: table.id, caloriesPrice: [] }
-                table.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
-                    let calories = caloriesPrice.querySelector('.calories').value
-                    let price = caloriesPrice.querySelector('.price').value
-                    if (calories !== '' && price !== '') {
-                        diet.caloriesPrice.push({
-                            calories,
-                            price
-                        })
-                    }
+                    let diet = { type: table.id, days: daysCard.id.substring(4),caloriesPrices: [] }
+                    table.querySelectorAll('.caloriesPrice').forEach(caloriesPrice => {
+                        let calories = caloriesPrice.querySelector('.calories').innerHTML
+                        let price = caloriesPrice.querySelector('.price').value
+                        if (price.trim() !== '') {
+                            diet.caloriesPrice.push({
+                                calories,
+                                price
+                            })
+                        }
+                    })
+                    body.diets.push(diet)
                 })
-                body.diets.push(diet)
             })
-
             let xhr = new XMLHttpRequest()
-            xhr.open('GET', '/catering/new', true)
+            xhr.open('POST', '/admin/catering/new', true)
             xhr.setRequestHeader("Content-Type", "application/json")
-            console.log(body)
             xhr.send(JSON.stringify(body))
+
+            //document.location.replace('/admin/caterings')
         }
 
 

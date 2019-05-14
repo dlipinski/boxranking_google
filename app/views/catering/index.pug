@@ -31,7 +31,7 @@ html(lang='pl')
                                             p=city.name
                                     td
                                         each diet in catering.diets
-                                            p=diet.type + ' '
+                                            p=`${diet.type} [${diet.days}]`
                                                 span.badge.badge-secondary=  diet.caloriesPrices.length
                                         
                                         

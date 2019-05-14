@@ -8,7 +8,7 @@ module.exports = () => {
 
     /* INDEX */
     router.get('/', indexController.index)
-    router.get('/:urlName', indexController.indexCity)
+    router.get('/:urlName/', indexController.indexCity)
 
     /* CITY */
     router.get('/admin/cities', cityController.getList)
