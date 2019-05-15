@@ -3,13 +3,8 @@ document.addEventListener('readystatechange', () => {
         initApp()
     }
 })
-const initHideCover = () => {
-    document.querySelector('.cover').style.top = '-100vh'
-
-}
 
 const initApp = () => {
-    initHideCover()
     initSliders()
     smallInit()
     initTypeListener()
@@ -76,14 +71,15 @@ const initTypeListener = () => {
     cookies.get = (name) => {
         return cookies.filter(x => x.name === name)[0] ? cookies.filter(x => x.name === name)[0].value : undefined
     }
+
     if(cookies.get('typePicker'))
         for (option of typePicker.options) {
             if(cookies.get('typePicker').split(',').includes(option.value)){
-                option.selected = true
+                option.selected = false
             }
         }
     typePicker.addEventListener('change', () => {
-        document.cookie = `typePicker=${[...typePicker.options].filter(x => x.selected).map(x => x.value)}; expires=Fri, 3 Aug 2020 20:47:11 UTC; path=/`
+        document.cookie = `typePicker=${[...typePicker.options].filter(x => !x.selected).map(x => x.value)}; expires=Fri, 3 Aug 2020 20:47:11 UTC; path=/`
     })
 }
 
@@ -172,10 +168,10 @@ const smallInit = () => {
     let resize = () => {
         if(width < 576){
             let breakCol = document.querySelector('#breakCol')
-            breakCol.classList.remove('border-right-teal')
+            breakCol.classList.remove('border-right')
             breakCol.classList.remove('mb-3')
             breakCol.classList.remove('pb-3')
-            breakCol.classList.add('border-bottom-teal')
+            breakCol.classList.add('border-bottom')
             breakCol.classList.add('mb-3')
             breakCol.classList.add('pb-3')
         }

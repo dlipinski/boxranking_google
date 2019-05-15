@@ -1,8 +1,8 @@
-.card.border-teal(style='border-radius:10px;')#preferences
+.card(style='border-radius:10px;')#preferences
     .card-body.text-dark
         .row
-            .col-sm.border-right-teal#breakCol
-                .row.mt-2
+            .col-sm.border-right#breakCol
+                .row
                     .col.mb-1
                         label(for='cityPicker') Miasto
                         br
@@ -17,7 +17,7 @@
                         br
                         select#typePicker.selectpicker(multiple)
                             each dietType in dietTypes
-                                option(value=dietType)=dietType
+                                option(value=dietType, selected=true)=dietType
                 .row.mb-1.mt-2
                     .col
                         label(for='daysPicker') Ilość dni w miesiącu
@@ -37,4 +37,4 @@
                         i#calories
                         #caloriesRange
     .card-footer.p-0
-        button.btn.btn-block.bg-light.p-2.text-dark#search(style='font-size:20px;border-radius:  0px 0px 10px 10px;') <i class="fas fa-search"></i> Wyszukaj 
+        button.btn.btn-block.bg-light.p-2.text-dark#search(style='font-size:20px;border-radius:  0px 0px 10px 10px;') <span class="icon-search"></span> Wyszukaj 

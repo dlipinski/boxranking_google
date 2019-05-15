@@ -4,16 +4,15 @@ html(lang='pl')
         include ../partial/head.pug
     body
         include ../partial/header.pug
-        .cover
-            div
-                img(src='/logo.png')
-        main.container(role='main').h-100
+
+        main.container(role='main')
             include ../partial/preferences.pug
-            .mb-3
-  
+
             include ../partial/cateringRow.pug
-            each catering, index in caterings
-                +cateringRow(catering, index)
+            .row
+                .col
+                .col
+            
             each catering, index in caterings
                 +cateringRow(catering, index+2)
 
